@@ -1,11 +1,9 @@
-namespace TNRD.Autohook
+public enum AutoHookSearchArea
 {
-    public enum AutoHookSearchArea
-    {
-        Default,
-        Parent,
-        Children,
-        DirectChildrenOnly,
-        AllChildrenOnly,
-    }
+    Default,
+    Parent,
+    Children,
+    DirectChildrenOnly,
+    AllChildrenOnly,
 }
+
