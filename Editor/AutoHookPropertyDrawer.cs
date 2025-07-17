@@ -61,6 +61,10 @@ public class AutoHookPropertyDrawer : PropertyDrawer
         {
             case AutoHookSearchArea.Parent:
                 return parent.GetComponentInParent(type);
+            case AutoHookSearchArea.Root:
+                return parent.transform.root.GetComponent(type);
+            case AutoHookSearchArea.Scene:
+                return UnityEngine.Object.FindFirstObjectByType(type) as Component;
             case AutoHookSearchArea.Children:
                 return parent.GetComponentInChildren(type);
             case AutoHookSearchArea.DirectChildrenOnly:
