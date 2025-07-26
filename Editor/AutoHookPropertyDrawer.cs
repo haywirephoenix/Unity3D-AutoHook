@@ -88,7 +88,6 @@ public class AutoHookPropertyDrawer : PropertyDrawer
         Component component = child.GetComponent(type);
         if (component != null)
             return component;
-
         return null;
     }
     
@@ -110,7 +109,6 @@ public class AutoHookPropertyDrawer : PropertyDrawer
                 return component;
             }
         }
-
         return null;
     }
 

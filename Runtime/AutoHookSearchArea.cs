@@ -4,6 +4,7 @@ public enum AutoHookSearchArea
     Parent,
     Root,
     Scene,
+    FirstChild,
     Children,
     DirectChildrenOnly,
     AllChildrenOnly,
