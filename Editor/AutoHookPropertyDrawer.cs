@@ -22,6 +22,11 @@ public class AutoHookPropertyDrawer : PropertyDrawer
     {
         AutoHookAttribute autoHookAttribute = (AutoHookAttribute) attribute;
 
+        if (autoHookAttribute.HideWhenFound && property.objectReferenceValue != null)
+        {
+            return;
+        }
+
         if (autoHookAttribute.StopSearchWhenFound)
         {
             if (property.objectReferenceValue == null)
@@ -65,6 +70,8 @@ public class AutoHookPropertyDrawer : PropertyDrawer
                 return parent.transform.root.GetComponent(type);
             case AutoHookSearchArea.Scene:
                 return UnityEngine.Object.FindFirstObjectByType(type) as Component;
+            case AutoHookSearchArea.FirstChild:
+                return FindComponentInFirstChild(parent.transform,type);
             case AutoHookSearchArea.Children:
                 return parent.GetComponentInChildren(type);
             case AutoHookSearchArea.DirectChildrenOnly:
@@ -74,6 +81,23 @@ public class AutoHookPropertyDrawer : PropertyDrawer
             default:
                 return parent.GetComponent(type);
         }
+    }
+
+    private Component GetComponentInChild(Transform parent, Transform child, Type type)
+    {
+        Component component = child.GetComponent(type);
+        if (component != null)
+            return component;
+
+        return null;
+    }
+    
+    private Component FindComponentInFirstChild(Transform parent, Type type)
+    {
+        if (parent.childCount == 0) return null;
+        var child = parent.GetChild(0);
+        Component component = GetComponentInChild(parent, child, type);
+        return component;
     }
 
     private Component FindComponentInDirectChildren(Transform parent, Type type)
