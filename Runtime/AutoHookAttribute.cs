@@ -17,7 +17,7 @@ public class AutoHookAttribute : PropertyAttribute
     /// <summary>
     /// Stops calling GetComponent when a matching component has been found. This is useful if you have many [AutoHook] usages in your file
     /// </summary>
-    public bool StopSearchWhenFound;
+    public bool StopSearchWhenFound = true;
 
     public AutoHookAttribute()
     {
