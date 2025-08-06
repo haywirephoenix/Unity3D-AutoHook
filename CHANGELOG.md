@@ -1,4 +1,9 @@
 # Changelog
+## [1.0.4] - 2025-07-27
+
+### Fixed
+- Fix performance issues
+
 ## [1.0.3] - 2025-07-27
 
 ### Fixed
