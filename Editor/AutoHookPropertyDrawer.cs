@@ -16,16 +16,6 @@ public class AutoHookPropertyDrawer : PropertyDrawer
         }
     }
 
-    public override float GetPropertyHeight(SerializedProperty property, GUIContent label)
-    {
-        if (autoHookAttribute.HideWhenFound && property.objectReferenceValue != null)
-        {
-            return 0;
-        }
-
-        return EditorGUI.GetPropertyHeight(property, label);
-    }
-
     public override void OnGUI(Rect position, SerializedProperty property, GUIContent label)
     {
         // Hide the property if HideWhenFound is true and the component is already found
